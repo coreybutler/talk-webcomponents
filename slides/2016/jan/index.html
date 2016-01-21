@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+  <link rel="icon" type="image/x-icon" href="http://edgeatx.github.io/favicon.ico" />
+
+  <title>Bleeding Edge Web: January 2016</title>
+
+  <!--link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'-->
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css" />
+
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" href="../../shared/core/deck.core.css">
+
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" href="../../shared/extensions/goto/deck.goto.css">
+  <link rel="stylesheet" href="../../shared/extensions/menu/deck.menu.css">
+  <link rel="stylesheet" href="../../shared/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" href="../../shared/extensions/status/deck.status.css">
+  <link rel="stylesheet" href="../../shared/extensions/hash/deck.hash.css">
+  <link rel="stylesheet" href="../../shared/extensions/scale/deck.scale.css">
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" href="../../shared/themes/style/skew.css">
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" href="../../shared/themes/transition/fade.css">
+
+  <!-- Required Modernizr file -->
+  <script src="../../shared/resources/js/modernizr-2.8.3.js"></script>
+
+  <!-- Preety print -->
+  <script src="../../shared/prism/prism.js"></script>
+  <link rel="stylesheet" href="../../shared/prism/prism.css">
+  <style>
+    .demo {
+      background-color: #22313F !important;
+    }
+    .warning {
+      background-color: #96281B !important;
+    }
+  </style>
+</head>
+<body class="deck-container language-javascript">
+
+<!--
+
+ Ideas:
+ upcoming stackoverflow docs
+
+
+-->
+
+<section class="slide title title-blue">
+  <div class="content">
+    <h1>Web Components</h2>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>Why should I listen to this guy?</h2>
+  <h3>Corey Butler (<a href="https://twitter.com/goldglovecb/">@goldglovecb</a>)</h3>
+  <p>&mdash; Founder Ecor Ventures | Cofounder PeopleFlow</p>
+  <h3>Developer:</h3>
+  <p style="display: flex;flex-direction:row;align-content:center;align-items:center;"><span>&mdash; <a href="http://fenixwebserver.com">Fenix Web Server</a></span><iframe src="https://ghbtns.com/github-btn.html?user=coreybutler&repo=fenix&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px" style="flex: 1 1 auto;margin:15px;"></iframe></p>
+  <p style="display: flex;flex-direction:row;align-content:center;align-items:center;"><span>&mdash; <a href="http://github.com/coreybutler/nvm-windows">NVM for Windows</a></span><iframe src="https://ghbtns.com/github-btn.html?user=coreybutler&repo=nvm-windows&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px" style="flex: 1 1 auto;margin:15px;"></iframe></p>
+  <p style="display: flex;flex-direction:row;align-content:center;align-items:center;"><span>&mdash; <a href="http://github.com/coreybutler/node-windows">node-windows</a>/<a href="http://github.com/coreybutler/node-mac">mac</a>/<a href="http://github.com/coreybutler/node-linux">linux</a></span><iframe src="https://ghbtns.com/github-btn.html?user=coreybutler&repo=node-windows&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px" style="flex: 1 1 auto;margin:15px;"></iframe></p>
+</section>
+
+<!-- - - - - - - - - - -  Begin slides  - - - - - - - - - - -->
+
+<section class="slide cover" style="background-image:url(./images/confused.jpg)">
+  <div class="content">
+    <h1>What are<br>web components?</h1>
+  </div>
+  <div class="shim" style="background-color:#369;opacity:.6;"></div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <h2>Definition</h2>
+    <p style="font-size: 200%;font-weight: 100;">Web Components are a <b style="color: red;">set of standards</b> currently being produced by <b style="color: red;">Google</b> engineers as a <b style="color: red;">W3C specification</b> that allow for the creation of reusable widgets or components in web documents and web applications. The intention behind them is to bring component-based software engineering to the World Wide Web. <b style="color: red;">The components model allows for encapsulation and interoperability of individual HTML elements.</b></p>
+  </div>
+</section>
+
+<section class="slide title title-blue">
+  <div class="content">
+    <h1>But we already have that! It's called HTML!</h2>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="content">
+    <h2>Web Component Specifications</h2>
+    <ol>
+      <li><a href="http://w3c.github.io/webcomponents/spec/custom/" target="blank">Custom Elements</a></li>
+      <li><a href="http://w3c.github.io/webcomponents/spec/imports/" target="blank">HTML Imports</a></li>
+      <li><a href="https://html.spec.whatwg.org/multipage/scripting.html#the-template-element" target="blank">Templates</a></li>
+      <li><a href="http://w3c.github.io/webcomponents/spec/shadow/" target="blank">Shadow DOM</a></li>
+    </ol>
+  </div>
+</section>
+
+<section class="slide">
+  <h2>1. Custom Elements</h2>
+  <pre><code>&lt;ngn-cycle&gt;<br/>
+  &lt;section class="active"&gt;<br/>
+    A
+  &lt;/section&gt;<br/>
+  &lt;section&gt;<br/>
+    B
+  &lt;/section&gt;<br/>
+  &lt;section&gt;<br/>
+    C
+  &lt;/section&gt;<br/>
+&lt;/ngn-cycle&gt;</code></pre>
+  <p>Single purpose, reusable, &amp; simple!</p>
+</section>
+
+<section class="slide title demo">
+  <h1>Custom Element Demo</h1>
+</section>
+
+<section class="slide">
+  <h2>Capabilities: Create your own...</h2>
+  <ul>
+    <li>&lt;tag-name&gt;</li>
+    <li>Tag attributes (&lt;tag-name myattribute="awesome"&gt;)</li>
+    <li>Methods</li>
+    <li>Events</li>
+    <li>Prototypes</li>
+    <li>Inheritance</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <h2>Custom Elements</h2>
+  <pre><code>var NgnCycle = document.registerElement('ngn-cycle', {
+  prototype: Object.create(HTMLElement.prototype, {
+
+    createdCallback: {
+      value: function () {
+        var me = this
+        // Create Shadow Root
+      }
+    },
+
+    next: {
+      value: function (callback) {
+        var curr = this.querySelector('section.active')
+        var next = curr.nextElementSibling
+        curr && curr.classList.remove('active')
+        if (curr && next) {
+          next.classList.add('active')
+        } else if (this.getAttribute('restart') === 'true') {
+          next = this.querySelector('section')
+          next.classList.add('active')
+        }
+        this.dispatchEvent(new CustomEvent('change', {
+          detail: {
+            previous: curr || null,
+            section: next || null
+          }
+        }))
+        callback && callback(next || null)
+      }
+    },
+
+    previous: {
+      value: function (callback) {
+        ...
+      }
+    },
+
+    show: {
+      value: function (i) {
+        ...
+      }
+    },
+
+    back: {
+      value: function (i) {
+        ...
+      }
+    }
+  })
+})</code></pre>
+</section>
+
+<section class="slide cover" style="background-image:url(./images/thinking.jpg)">
+  <h1 style="position: absolute; top: 15%; left: -55%;">Inspired yet?</h1>
+</section>
+
+<section class="slide">
+  <h2>2. HTML Imports</h2>
+  <pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;script src="https://cdn.jsdelivr.net/webcomponentsjs/0.7.20/webcomponents.min.js"&gt;&lt;/script&gt;
+    &lt;link rel="import" href="https://cdn.jsdelivr.net/ngn-components/0.0.13/ngn-cycle.html"/&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;ngn-cycle&gt;
+      &lt;section class="active"&gt;
+        A
+      &lt;/section&gt;
+      &lt;section&gt;
+        B
+      &lt;/section&gt;
+      &lt;section&gt;
+        C
+      &lt;/section&gt;
+    &lt;/ngn-cycle&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</section>
+
+<section class="slide title warning">
+  <h1>WARNING<br/>Firefox won't play nice!</h1>
+</section>
+
+<section class="slide">
+  <h2>Firefox will not ship HTML Imports.</h2>
+  <p>Firefox will not ship HTML Imports. See this <a href="https://hacks.mozilla.org/2014/12/mozilla-and-web-components/" target="_blank">Hacks blog post</a> for more information. You can still use HTML Imports in Firefox by enabling the dom.webcomponents.enabled flag. If you don't want to enable the flag, you can use a polyfill such as Google's webcomponents.js.</p>
+  <p>Source: Mozilla Developer Network</p>
+  <p style="padding: 20px; font-weight: 100; background-color: #F5D76E;">Mozilla will not ship an implementation of HTML Imports. <b style="font-weight: 900;">We expect that once JavaScript modules — a feature derived from JavaScript libraries written by the developer community — is shipped, the way we look at this problem will have changed.</b> We have also learned from Gaia and others, that lack of HTML Imports is not a problem as the functionality can easily be provided for with a polyfill if desired.</p>
+</section>
+
+<section class="slide cover" style="background-image:url(./images/disappointed.jpg)">
+  <h1>**sigh**</h1>
+</section>
+
+<section class="slide">
+  <h2>Workaround!</h2>
+  <p>Can you spot the difference?</p>
+  <pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;script src="https://cdn.jsdelivr.net/webcomponentsjs/0.7.20/webcomponents.min.js"&gt;&lt;/script&gt;
+    &lt;script src="https://cdn.jsdelivr.net/ngn-components/0.0.13/ngn-cycle.min.js"/&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;ngn-cycle&gt;
+      &lt;section class="active"&gt;
+        A
+      &lt;/section&gt;
+      &lt;section&gt;
+        B
+      &lt;/section&gt;
+      &lt;section&gt;
+        C
+      &lt;/section&gt;
+    &lt;/ngn-cycle&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</section>
+
+<section class="slide cover" style="background-image:url(./images/awesome.jpg)">
+</section>
+
+<section class="slide">
+  <h2>3. Templates</h2>
+  <p>Declare inert DOM subtrees in HTML, instantiated via document fragments.</p>
+  <p>i.e. Only write to the DOM when you need it.</p>
+  <a href="https://html.spec.whatwg.org/multipage/scripting.html#the-template-element" target="_blank">W3C Example</a>
+  <pre><code>&lt;table&gt;
+  &lt;template id="row"&gt;
+   &lt;tr&gt;&lt;td&gt;&lt;td&gt;&lt;td&gt;&lt;td&gt;&lt;/tr&gt;
+  &lt;/template&gt;
+&lt;/table&gt;</code></pre>
+<pre><code>template.content.cloneNode(true)</code></pre>
+<p>IMPORTANT: The template is part of it's own document fragment, not the HTML document.</p>
+</section>
+
+<section class="slide title demo">
+  <h1><a style="color: #ffffff !important; text-decoration: none; border-bottom: 2px dotted #ffffff;" href="https://github.com/ngnjs/chassis-components/blob/master/tags/ngn-cycle/template.html" target="_blank">Demo: &lt;ngn-cycle&gt; template</a></h1>
+</section>
+
+<section class="slide">
+  <h2>Shadow DOM</h2>
+  <p>A whole new DOM to manage! (stop groaning, it's not that bad)</p>
+  <ul>
+    <li>Private DOM: Boundaries</li>
+    <li>Encapsulated</li>
+    <li>Invisible to End User</li>
+  </ul>
+  <p>This is where widgetry becomes a first-class citizen.</p>
+  <p>This is basically how browser vendors make HTML tags.</p>
+</section>
+
+<section class="slide demo" style="display: flex; align-content: center; align-items: center; flex: 1 1 auto; justify-content: center;">
+  <video src="http://craftymind.com/factory/html5video/BigBuckBunny_640x360.mp4" controls></video>
+  <pre><code>&lt;video src="../BigBuckBunny_640x360.mp4" controls&gt;&lt;/video&gt;</code></pre>
+</section>
+
+<section class="slide demo" style="display: flex; align-content: center; align-items: center; flex: 1 1 auto; justify-content: center;">
+  <img src="./images/shadowdom-devtools.png"/>
+</section>
+
+<section class="slide demo" style="display: flex; align-content: center; align-items: center; flex: 1 1 auto; justify-content: center;">
+  <img src="./images/ngn-cycle-shadow-dom.png"/>
+</section>
+
+<section class="slide cover" style="background-image:url(./images/awesome.jpg)">
+</section>
+
+<section class="slide" style="display: flex;align-content:center;align-items: center;justify-content:center;">
+  <h1 style="position:absolute;top: 15%;">Awww yeah!</h1>
+  <pre><code>&lt;html&gt;
+  &lt;body&gt;
+    &lt;my-app&gt;&lt;/my-app&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</section>
+
+<section class="slide cover" style="background-image:url(./images/disappointed.jpg)">
+  <h1>**sigh**</h1>
+</section>
+
+<section class="slide">
+  <h2>From the Trenches: Best Practices</h2>
+  <ul>
+    <li>Narrow focus is best. DRY.</li>
+    <li>Use Event Bus Architecture.</li>
+    <li>Encapsulate logic, not UI.</li>
+    <li>"Surface" to the Light DOM.</li>
+    <li>Minimize CSS.</li>
+  </ul>
+  <p>Remember: The browser vendors are handing over the keys to the kingdom.</p>
+  <p>Remember: Still early, but definitely usable.</p>
+</section>
+
+<section class="slide cover" style="background-color: #f2e8d4; display: flex;align-content:center;align-items: center;justify-content:center;">
+  <img src="./images/customelements.png"/>
+</section>
+<section class="slide cover" style="background-color: #f2e8d4; display: flex;align-content:center;align-items: center;justify-content:center;">
+  <img src="./images/htmlimports.png"/>
+</section>
+<section class="slide cover" style="background-color: #f2e8d4; display: flex;align-content:center;align-items: center;justify-content:center;">
+  <img src="./images/htmltemplates.png"/>
+</section>
+<section class="slide cover" style="background-color: #f2e8d4; display: flex;align-content:center;align-items: center;justify-content:center;">
+  <img src="./images/shadowdom.png"/>
+</section>
+
+<!-- - - - - - - - - - -  Fin  - - - - - - - - - - -->
+
+<section class="slide">
+  <h2>Thanks!</h2>
+  <h3>Corey Butler &mdash; <a href="https://twitter.com/goldglovecb">@goldglovecb</a></h3>
+</section>
+
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+  <span class="deck-status-current"></span> / <span class="deck-status-total"></span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="." method="get" class="goto-form">
+  <label for="goto-slide">Go to slide:</label>
+  <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+  <datalist id="goto-datalist"></datalist>
+  <input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="../../shared/resources/js/jquery-1.7.2.min.js"></script>
+<script src="../../shared/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="../../shared/core/deck.core.js"></script>
+<script src="../../shared/extensions/hash/deck.hash.js"></script>
+<script src="../../shared/extensions/menu/deck.menu.js"></script>
+<script src="../../shared/extensions/goto/deck.goto.js"></script>
+<script src="../../shared/extensions/status/deck.status.js"></script>
+<script src="../../shared/extensions/navigation/deck.navigation.js"></script>
+<script src="../../shared/extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    // Init slides
+    $.deck('.slide');
+    // Find all links and make them launch new tabs
+    $('a').attr('target', '_blank');
+
+    var firstScissorHalf = document.querySelector('#firstScissorHalf');
+    var secondScissorHalf = document.querySelector('#secondScissorHalf');
+
+    var positionKeyframes = [{motionOffset: '0%'}, {motionOffset: '100%'}];
+    var positionTiming = {duration: 12000, iterations: Infinity};
+    firstScissorHalf.animate(positionKeyframes, positionTiming);
+    secondScissorHalf.animate(positionKeyframes, positionTiming);
+
+    var firstRotationKeyframes = [{motionRotation: 'auto 0deg'}, {motionRotation: 'auto -45deg'}, {motionRotation: 'auto 0deg'}];
+    var secondRotationKeyframes = [{motionRotation: 'auto 0deg'}, {motionRotation: 'auto 45deg'}, {motionRotation: 'auto 0deg'}];
+    var rotationTiming = {duration: 1000, iterations: Infinity};
+    firstScissorHalf.animate(firstRotationKeyframes, rotationTiming);
+    secondScissorHalf.animate(secondRotationKeyframes, rotationTiming);
+  });
+</script>
+</body>
+</html>
